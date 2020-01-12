@@ -1,0 +1,161 @@
+body {
+  background-color: #fbfcfc;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  justify-content: center;
+  margin: 0;
+  min-height: 100vh;
+}
+
+main {
+  align-items: flex-start;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2px;
+}
+
+.stage {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  user-select: none;
+}
+
+.console {
+  align-self: stretch;
+  background-color: #ebedef;
+  border: 0;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  margin: 2px;
+  min-width: 300px;
+  padding: 4px;
+  resize: none;
+}
+
+.stage-square {
+  flex-grow: 1;
+  position: relative;
+  width: 1px;
+}
+
+.stage-square::before {
+  background-color: #d6dbdf;
+  border: 2px solid #fbfcfc;
+  box-sizing: border-box;
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.stage-square::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.stage-square.selected::before {
+  border-color: #17202a;
+}
+
+.stage-break {
+  width: 100%;
+}
+
+.stage-character {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 2px;
+  position: absolute;
+  transform: translate(0);
+  transition: transform 300ms ease-in-out;
+  width: 100%;
+  z-index: 1;
+}
+
+.stage-character[data-is-moving] {
+  z-index: 2;
+}
+
+.stage-character[data-is-dead] {
+  display: none;
+}
+
+.character {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  pointer-events: none;
+  position: relative;
+}
+
+.character-health {
+  bottom: 0;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.character-emoji {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 170%;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+}
+
+.character-labels {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.character-label {
+  background: #17202a;
+  font-size: 75%;
+  margin: 2px;
+  padding: 2px 4px;
+}
+
+.character-stats {
+  background-color: rgba(24, 33, 43, 0.3);
+  color: #fff;
+  font-size: 50%;
+  margin: 2px;
+  padding: 2px;
+  position: relative;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  body {
+    justify-content: flex-start;
+  }
+
+  main {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: normal;
+  }
+
+  .console {
+    flex-grow: 1;
+  }
+
+  .stage {
+    flex-grow: 0;
+    width: 100%;
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "the-bee-game",
+  "version": "1.0.0",
+  "repository": "git@github.com:mincof/the-bee-game.git",
+  "author": "George Mincof <1261813+gmincof@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "postcss theBeeGame.css -d dist --no-map --use autoprefixer; babel theBeeGame.js -d dist && webpack dist/theBeeGame.js -o dist/theBeeGame.js --mode=production"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "usage",
+          "corejs": {
+            "version": 3
+          }
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.0",
+    "@babel/core": "^7.8.0",
+    "@babel/preset-env": "^7.8.0",
+    "autoprefixer": "^9.7.3",
+    "core-js": "3",
+    "postcss-cli": "^7.1.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
